@@ -1,0 +1,13 @@
+
+	/* 重置 */
+	/* 统一调用背景图 */
+	/* 布局 */
+	.g-doc{min-width: 800px;}
+	.g-bd {margin: 0 104px;}
+	.g-mn {width: 100%; }
+	.g-mn1{margin-left: 200px; background-color: red;}
+	.g-sd {margin-right: -200px; background-color: yellow;}
+	/* 模块 */
+	/* 元件 */
+	/* 功能 */
+	.f-cb{clear: both;}

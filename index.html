@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>NEC：更好的CSS方案</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="css/reset.css"/>
+<link rel="stylesheet" href="css/function.css"/>
+<link rel="stylesheet/mcss" href="mcss/main.mcss"/>
+<style type = 'text/css'>
+    /* 重置 */
+    /* 统一调用背景图 */
+    .m-top .msg,.m-top .house,.u-lst .icon{background: url(img/sprite.png) no-repeat 999px 999px;}
+    .m-top .msg{background-position: 0 -19px;width: 16px;height: 15px; margin-bottom: -1px;}
+    .m-top .house{background-position: 0 0;width: 16px;height: 15px; margin-bottom: -1px;}
+    .u-lst .icon{background-position:0 -81px;width: 16px;height: 16px;}
+    .u-lst .icon1{background-position:0 -61px;width: 16px;height: 16px;}
+    .u-lst .icon2{background-position:0 -40px;width: 16px;height: 16px;}
+    /* 布局 */
+    *{font-size: 11px;font-color:#666;}
+    .g-doc{min-width: 800px;}
+    .g-bd {margin: 0 auto;width: 990px;}
+    .g-mn {width: 546px; border: 1px solid #bbb;margin-top: 10px;padding-left: 20px;padding-right: 267px;}
+    .g-mn h2{font-size: 20px;margin: 20px 0;}
+    .g-sd {width: 145px;}
+    /* 模块 */
+    .m-top {margin: 8px 0 8px 15px;}
+    .m-nav a{padding: 0 6px;}
+    .m-menu {margin-top: -1px;}
+    .m-menu li{display: inline;padding: 0 8px;}
+    .m-menu li:last-child{margin-right: 12px;}
+    .m-menu .hl{color: #F70;}
+    .m-menu .divider{ border-left: 1px solid #ccc;padding: 0;}
+    .m-tt{height: 50px;background-color: #dbdbdb;border-top: 1px solid #ccc;padding: 5px 0 12px 0;}
+    .m-tt1{width: 990px;margin: 0 auto;}
+    .m-tt img {width: 50px;}
+    .m-tab{}
+    .m-tab ul{border-bottom: 1px solid #bbb;}
+    .m-tab li{display: inline-block;border-left: 1px solid #bbb;border-top:1px solid #bbb;position: relative;top: 1px;padding: 7px 32px;}
+    .m-tab li:last-child{margin-left: -4px;border-right:1px solid #bbb;}
+    .m-tab li.active{border-bottom: 1px solid #fff;}
+    .m-sd{margin-right: -267px;}
+    .m-ipt{background-color: #ececec;margin-top: 13px;padding: 6px 0 36px 8px;}
+    .m-ipt .tt{width:510px;border: none;padding: 7px 10px;margin-bottom: 5px;background-color: #fff;}
+    .m-ipt textarea{padding: 7px 10px;}
+    .m-ipt .btn{margin-right: 7px;margin-top: 5px;padding: 4px 10px;}
+    .m-ctt{}
+    .m-ctt .mn{padding: 0 20px;}
+    .m-ctt .mn .slt{border-bottom: 1px dotted #d8e0e5;}
+    .m-ctt .btm{}
+    /* 元件 */
+    .u-hd {padding-left: 20px;}
+    .u-hd h2{font-size: 19px;color:#7b7b7b;font-weight: normal;}
+    .u-hd .btn{color: #515151;padding: 3px 27px;margin-top: 7px;}
+    .u-lst{width: 143px;border: 1px solid #bbb;border-radius: 1px;margin: 10px 0;}
+    .u-lst .hd{background-color: #e5e5e5;}
+    .u-lst .icon{padding: 0 0px;margin: 5px 6px 8px 8px;}
+    .u-lst .tt{vertical-align: middle;margin-top: -22px;margin-left: -3px;}
+    .u-lst li {margin: 7px 0 7px 30px;color: #21759b;}
+    .u-lst li.active{color: #333;}
+    /* 功能 */
+    .f-cr1{color: #a4a4a4;}
+</style>
+<!-- <script src="https://rawgithub.com/leeluolee/mcss/master/dist/mcss-latest.js"></script> -->
+</head>
+<body>
+<div class="g-doc f-ff1">
+	<!-- 头部 -->
+    <div class="g-hd">
+        <!-- 顶部 -->
+        <div class="m-top f-cb">
+            <div class="m-nav f-fl ">
+                <a href="#">博客</a>
+                <a href="#">摄影</a>
+                <a href="#">随便看看</a>
+            </div>
+            <div class="m-menu f-fr ">
+                <ul>
+                    <li><pre class="f-ib">中午好 , testblog   ( <a class="msg f-ib"></a>5) </pre></li>
+                    <li class="divider"></li>
+                    <li><a class="house f-ib"></a> 个人中心</li>
+                    <li>消息(<span class="hl f-fwb">1274</span>)</li>
+                    <li>反馈</li>
+                    <li class="divider"></li>
+                    <li class="f-cr1">退出</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /顶部 -->
+        <!-- 标题栏 -->
+        <div class="m-tt">
+            <div class="m-tt1">
+                <img src="http://os.blog.163.com/common/ava.s?host=testblog1&b=0&r=-1" alt="avatar" class="f-fl">
+                <div class="u-hd f-fl">
+                    <h2>欢迎！testblog</h2>
+                    <input type="button" class="btn" value="传相片">
+                </div>   
+            </div>
+        </div>
+        <!-- /标题栏 -->
+    </div>
+    <!-- /头部 -->
+    <!-- 主体 -->
+    <div class="g-bd f-cb">
+    	<!-- 主栏 -->
+        <div class="g-mn f-fr">
+            <h2 class="f-fwn">日志管理</h2>
+            <div class="m-tab">
+                <ul>
+                    <li class="active">日志</li>
+                    <li>标签</li>
+                </ul>
+            </div>
+            <div class="m-ipt">
+                <input type="text" class="tt f-db" value="日志标题">
+                <textarea name="content" cols="82" rows="10" placeholder="在这里可以写日志哦~"></textarea>
+                <input type="button" class="btn f-fr" value="清   空">
+                <input type="button" class="btn f-fr" value="发   布">
+            </div>
+            <div class="m-ctt">
+                <div class="mn">
+                    <div class="slt">
+                        <input type="checkbox">
+                        js高性能原则（转载）
+                        <a class="f-fr">更多</a>
+                        <a class="f-fr">编辑</a>
+                    </div>
+                </div>
+                <div class="btm">
+                    <input type="checkbox">全选
+                    <input type="button" value="删除">
+                </div>
+            </div>
+            <div class="m-sd f-fr">好友最新日志</div>
+        </div>
+        <!-- /主栏 -->
+        <!-- 侧边栏 -->
+        <div class="g-sd f-fl">
+        	<div class="u-lst">
+                <div class="hd">
+                    <a class="usr icon f-ib"></a>
+                    <span class="tt f-ib f-fwb">博客动态</span>
+                </div>
+                <hr>
+                <ul>
+                    <li>博客动态</li>
+                    <li>消息中心</li>
+                </ul>
+            </div>
+        	<div class="u-lst">
+                <div class="hd">
+                    <a class="icon icon1 f-ib"></a>
+                    <span class="tt f-ib f-fwb">博客管理</span>
+                </div>
+                <hr>
+                <ul>
+                    <li class="active">日志管理</li>
+                    <li>博友管理</li>
+                    <li>访问统计</li>
+                    <li>访客设置</li>
+                    <li>博客装扮</li>
+                </ul>
+            </div>
+        	<div class="u-lst">
+                <div class="hd">
+                    <a class="icon icon2 f-ib"></a>
+                    <span class="tt f-ib f-fwb">服务</span>
+                </div>
+                <hr>
+                <ul>
+                    <li>手机博客</li>
+                    <li>博客复制</li>
+                    <li>邮件写博</li>
+                    <li>手机邮</li>
+                    <li>投票</li>
+                    <li>读书</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /侧边栏 -->
+    </div>
+    <!-- /主体 -->
+    <!-- 脚部 -->
+    <div class="g-ft f-cb">
+        <div class="f-tac">
+        	<a href="#">公司简介</a>
+        	<a href="#">联系方法</a>
+        	<a href="#">招聘信息</a>
+        	<a href="#">客户服务</a>
+        	<a href="#">相关法律</a>
+        	<a href="#">博客风格</a>
+        	<a href="#">手机博客</a>
+        </div>
+        <div class="f-tac">网易公司版权所有 &copy;1997-2011</div>
+    </div>
+    <!-- /脚部 -->
+</div>
+</body>
+</html>
