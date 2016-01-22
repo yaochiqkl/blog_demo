@@ -41,6 +41,7 @@
     .m-ctt{margin-top: 17px;}
     .m-ctt .mn{}
     .m-ctt .slt{padding: 0 0 0 20px;height: 45px;border-bottom: 1px dotted #d8e0e5;position: relative;}
+    .m-ctt .icon-private{margin: 0 2px;}
     .m-ctt .btm{padding: 0 20px 0 20px;}
     .m-ctt .rct{width: 0;height: 0;border-style: solid;border-width: 5px 4px 0 4px;border-color: #a8a8a8 #fff #fff #fff;margin: 4px 15px 0 3px;}
     .m-ctt .edt{margin-right: 65px;position: absolute;right: 0;top: 2px;}
