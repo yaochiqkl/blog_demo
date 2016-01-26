@@ -231,12 +231,30 @@ var pageInit = (function(){
                     </div>';*/
 		};
 	};
+	var scrollInit = function(lh,speed,delay){ 
+		var t; 
+		var o=document.querySelector(".m-sd2 .content");
+		function start(){ 
+			t=setInterval(scrolling,speed); 
+			o.scrollTop += 1;
+		} 
+		function scrolling(){ 
+			if(o.scrollTop%lh !== 0){
+				o.scrollTop += 1; 
+			} else {
+				clearInterval(t); 
+				setTimeout(start,delay); 
+			} 
+		} 
+		setTimeout(start,delay); 
+	};
 	return {
 		regBtn: regBtn,
 		regBtn2: regBtn2,
 		insertBlogs: insertBlogs,
 		blogsRegBtn: blogsRegBtn,
-		allRegBtn: allRegBtn
+		allRegBtn: allRegBtn,
+		scrollInit: scrollInit
 	};
 })();
 
@@ -248,6 +266,8 @@ window.onload = function(){
 	pageInit.regBtn2();
 	pageInit.blogsRegBtn();
 	pageInit.allRegBtn();
+	//pageInit.scrollInit();
+	pageInit.scrollInit(48,30,2000);
 };
 
 
