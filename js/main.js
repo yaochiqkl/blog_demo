@@ -261,12 +261,10 @@ var pageInit = (function(){
 
 	pageInit.insertBlogs();
 window.onload = function(){
-	//utils.doGet("getblogs");
 	pageInit.regBtn();
 	pageInit.regBtn2();
 	pageInit.blogsRegBtn();
 	pageInit.allRegBtn();
-	//pageInit.scrollInit();
 	pageInit.scrollInit(48,30,2000);
 };
 
