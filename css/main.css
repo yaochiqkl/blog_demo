@@ -43,6 +43,7 @@
     .m-ctt{margin-top: 17px;}
     .m-ctt .mn{}
     .m-ctt .slt{padding: 0 0 0 20px;height: 45px;border-bottom: 1px dotted #d8e0e5;position: relative;}
+    .m-ctt .slt .time {display: inline-flex;width: 119px;justify-content:space-between;}
     .m-ctt .icon-private{margin: 0 2px;}
     .m-ctt .btm{padding: 0 20px 0 20px;}
     .m-ctt .rct{width: 0;height: 0;border-style: solid;border-width: 5px 4px 0 4px;border-color: #a8a8a8 #fff #fff #fff;margin: 4px 15px 0 3px;}
@@ -69,7 +70,6 @@
     .m-ft .dd{color:#ddd;}
     .m-ft a:last-child{margin-left: -7px;}
     .m-label{padding:48px 0 20px 0;border-bottom: 1px dotted #d8e0e5;}
-    .m-label.hidden{display: none;}
     /* 元件 */
     .u-hd {padding-left: 20px;}
     .u-hd h2{font-size: 19px;color:#7b7b7b;font-weight: normal;}
