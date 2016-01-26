@@ -206,7 +206,7 @@ var pageInit = (function(){
 				//document.querySelector(".m-ctt .mn").appendChild(slt);
 				var theFirstChild = document.querySelector(".m-ctt .slt");
 				theFirstChild.parentNode.insertBefore(slt, theFirstChild);
-				//更新点击事件，更优的解决方案是事件代理
+				//更新点击事件，更优的解决方案是事件代理，暂时搁置
 				pageInit.blogsRegBtn();
 				pageInit.allRegBtn();
 			}
