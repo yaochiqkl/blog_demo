@@ -17,20 +17,9 @@
     </ul>
     <input onkeydown="test(event);">test</input>
     <script type="text/javascript">
-        function test(event){
-            console.log(event);
-        }
-        var li = document.getElementsByTagName('li');
-        var li2 = document.querySelectorAll('li');
-        console.log(document.getElementsByTagName('ul')[0]);
-        var element = document.getElementsByTagName('ul')[0];
-        var node = document.createElement("li");
-        node.setAttribute("data-email-a","111@email.com");
-        console.log(node.dataset.emailA);
-        element.appendChild(node);
-        console.log(li);
-        console.log(li2);
-        document.addEventListener(keyup,function(event){console.log(event);},false);
+        var foo = requestAnimationFrame(function () {
+            console.log("1");
+        });
     </script>
 </body>
 </html>

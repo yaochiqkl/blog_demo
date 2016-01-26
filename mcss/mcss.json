@@ -1,0 +1,6 @@
+{
+  "input": "./",
+  "output": "../test",
+  "format": 1,
+  "watch": 2
+}

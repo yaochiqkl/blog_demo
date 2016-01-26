@@ -12,7 +12,7 @@
     *{font-size: 11px;font-color:#666;}
     .g-doc{min-width: 800px;}
     .g-bd {margin: 0 auto;width: 990px;position: relative;}
-    .g-mn {width: 546px; border: 1px solid #bbb;margin-top: 10px;padding-left: 20px;padding-right: 267px;}
+    .g-mn {width: 546px; border: 1px solid #bbb;margin-top: 10px;padding-left: 20px;padding-right: 267px;min-height: 600px;}
     .g-mn h2{font-size: 20px;margin: 20px 0;position: relative;}
     .g-sd {width: 145px;}
     .g-ft {margin-top: 18px;}
@@ -30,7 +30,7 @@
     .m-tt img {width: 50px;}
     .m-tab{}
     .m-tab ul{border-bottom: 1px solid #bbb;}
-    .m-tab li{display: inline-block;border-left: 1px solid #bbb;border-top:1px solid #bbb;position: relative;top: 1px;padding: 7px 32px;}
+    .m-tab li{display: inline-block;border-left: 1px solid #bbb;border-top:1px solid #bbb;position: relative;top: 1px;padding: 7px 32px;cursor: pointer;}
     .m-tab li:last-child{margin-left: -4px;border-right:1px solid #bbb;}
     .m-tab li.active{border-bottom: 1px solid #fff;}
     .m-sd{margin-right: -267px;}
@@ -38,6 +38,8 @@
     .m-ipt .tt{width:510px;border: none;padding: 7px 10px;margin-bottom: 5px;background-color: #fff;}
     .m-ipt textarea{padding: 7px 10px;}
     .m-ipt .btn{margin-right: 7px;margin-top: 5px;padding: 4px 10px;}
+    .m-ipt.hidden{display: none;}
+    .m-ctt.hidden{display: none;}
     .m-ctt{margin-top: 17px;}
     .m-ctt .mn{}
     .m-ctt .slt{padding: 0 0 0 20px;height: 45px;border-bottom: 1px dotted #d8e0e5;position: relative;}
@@ -66,6 +68,8 @@
     .m-ft a{margin: 0 3px;}
     .m-ft .dd{color:#ddd;}
     .m-ft a:last-child{margin-left: -7px;}
+    .m-label{padding:48px 0 20px 0;border-bottom: 1px dotted #d8e0e5;}
+    .m-label.hidden{display: none;}
     /* 元件 */
     .u-hd {padding-left: 20px;}
     .u-hd h2{font-size: 19px;color:#7b7b7b;font-weight: normal;}
@@ -74,7 +78,8 @@
     .u-lst .hd{background-color: #e5e5e5;}
     .u-lst .icon{padding: 0 0px;margin: 5px 6px 8px 8px;}
     .u-lst .tt{vertical-align: middle;margin-top: -22px;margin-left: -3px;}
-    .u-lst li {margin: 7px 0 7px 30px;color:#21759b;}
+    .u-lst li {margin: 7px 0 7px 30px;color:#21759b;cursor: pointer;}
+    .u-lst li:hover{color: #444;}
     .u-lst li.active{color: #333;}
     /* 功能 */
     .f-cr1{color: #a4a4a4;}
