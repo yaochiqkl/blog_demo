@@ -53,6 +53,7 @@ var utils = (function(){
 })();
 var pageInit = (function(){
 	var regBtn = function(){
+		//左侧菜单栏点击
 		var ls = document.querySelectorAll(".u-lst li");
 		var menuClick = function(){
 			for (var i = 0; i < ls.length; i++) {
@@ -63,31 +64,27 @@ var pageInit = (function(){
 		for (var i = 0; i < ls.length; i++) {
 			ls[i].onclick = menuClick;  
 		}
-
-	};
-	var regBtn2 = function(){
-		var ls = document.querySelectorAll(".m-tab li");
-		var menuClick = function(){
-			for (var i = 0; i < ls.length; i++) {
-				ls[i].setAttribute("class", "");
-			}
-			this.setAttribute("class", "active");
+		//标签栏切换
+		var ls2 = document.querySelectorAll(".m-tab li");
+		var tabClick = function(){
 			if (this.innerHTML == "日志") {
+				ls2[1].setAttribute("class", "");
+				utils.addClass(this,"active");
 				utils.addClass(document.querySelector(".m-label"),"f-dn");
 				utils.removeClass(document.querySelector(".m-ipt"),"f-dn");
 				utils.removeClass(document.querySelector(".m-ctt"),"f-dn");
 			} else {
+				ls2[0].setAttribute("class", "");
+				utils.addClass(this,"active");
 				utils.removeClass(document.querySelector(".m-label"),"f-dn");
 				utils.addClass(document.querySelector(".m-ipt"),"f-dn");
 				utils.addClass(document.querySelector(".m-ctt"),"f-dn");
 			}
 		};
-		for (var i = 0; i < ls.length; i++) {
-			ls[i].onclick = menuClick;  
+		for (i = 0; i < ls2.length; i++) {
+			ls2[i].onclick = tabClick;  
 		}
-
 	};
-
 	var insertBlogs = function(){
 		var html = '';
 		for( var i = 0; i < data.length; i++){
@@ -210,25 +207,6 @@ var pageInit = (function(){
 				pageInit.blogsRegBtn();
 				pageInit.allRegBtn();
 			}
-			/*var piece = '<div class="slt">\
-                        <input type="checkbox" class="f-fl">\
-                        <div class="content">\
-                            <div class="f-cr2">'+data[i].title+'</div>\
-                            <div>\
-                                <span class="time">'+data[i].shortPublishDateStr+' '+data[i].publishTimeStr+'</span>\
-                                <span class="read">阅读'+data[i].accessCount+'</span>\
-                                <span class="comment">评论'+data[i].commentCount+'</span>\
-                            </div>\
-                        </div>\
-                        <div class="more">\
-                            <ul>\
-                                更多<a class="rct f-fr"></a>\
-                                <li><a class="dlt-single">删除</a></li>\
-                                <li><a class="top">顶置</a></li>\
-                            </ul>\
-                        </div>\
-                        <a class="edt  f-cr2">编辑</a>\
-                    </div>';*/
 		};
 	};
 	var scrollInit = function(lh,speed,delay){ 
@@ -241,6 +219,10 @@ var pageInit = (function(){
 		function scrolling(){ 
 			if(o.scrollTop%lh !== 0){
 				o.scrollTop += 1; 
+				console.log(o.scrollTop);
+				if(o.scrollTop >= 384){
+					o.scrollTop = 0;
+				} 
 			} else {
 				clearInterval(t); 
 				setTimeout(start,delay); 
@@ -250,7 +232,6 @@ var pageInit = (function(){
 	};
 	return {
 		regBtn: regBtn,
-		regBtn2: regBtn2,
 		insertBlogs: insertBlogs,
 		blogsRegBtn: blogsRegBtn,
 		allRegBtn: allRegBtn,
@@ -262,10 +243,9 @@ var pageInit = (function(){
 	pageInit.insertBlogs();
 window.onload = function(){
 	pageInit.regBtn();
-	pageInit.regBtn2();
 	pageInit.blogsRegBtn();
 	pageInit.allRegBtn();
-	pageInit.scrollInit(48,30,2000);
+	pageInit.scrollInit(48,20,1000);
 };
 
 
