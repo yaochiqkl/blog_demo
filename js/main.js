@@ -1,3 +1,4 @@
+//工具函数库
 var utils = (function(){
 	var xmlHttp;
 	var commom_url = "http://fed.hz.netease.com/api/";
@@ -71,6 +72,7 @@ var utils = (function(){
 		sort: insertSort
 	};
 })();
+//页面初始化函数库
 var pageInit = (function(){
 	var regBtn = function(){
 		//左侧菜单栏点击
@@ -376,6 +378,17 @@ var pageInit = (function(){
 			}
 		};
 	};
+	var insertFriendLog = function(){
+		var html = '';
+		for( var i = 0; i < 13 ; i++ ) {
+			html += '<div class="slt">\
+                        <img class="f-fl" src="img/avatar.jpg" alt="">\
+                        <div class="hd">小油菜</div>\
+                        <div class="bd">2hit:教你如何吧美妞拍的...</div>\
+                    </div>'
+		}
+		document.querySelector(".m-sd2 .content").innerHTML = html;
+	};
 	return {
 		regBtn: regBtn,
 		insertBlogs: insertBlogs,
@@ -384,15 +397,17 @@ var pageInit = (function(){
 		pubRegBtn: pubRegBtn,
 		editRegBtn: editRegBtn,
 		editPubRegBtn: editPubRegBtn,
-		scrollInit: scrollInit
+		scrollInit: scrollInit,
+		insertFriendLog: insertFriendLog
 	};
 })();
 
 	//静态模拟数据
 	pageInit.insertBlogs();
+	pageInit.insertFriendLog();
 
 window.onload = function(){
-	//后端没有返回CORS头部，跨域问题没有解决
+	//CORS没有配置，暂时无法跨域
 	//utils.doGet("getblogs");
 	pageInit.regBtn();
 	pageInit.pubRegBtn();
