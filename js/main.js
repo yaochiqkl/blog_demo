@@ -393,12 +393,12 @@ var pageInit = (function(){
 		regBtn: regBtn,
 		insertBlogs: insertBlogs,
 		blogsRegBtn: blogsRegBtn,
+		insertFriendLog: insertFriendLog,
 		allRegBtn: allRegBtn,
 		pubRegBtn: pubRegBtn,
 		editRegBtn: editRegBtn,
 		editPubRegBtn: editPubRegBtn,
-		scrollInit: scrollInit,
-		insertFriendLog: insertFriendLog
+		scrollInit: scrollInit
 	};
 })();
 
@@ -413,7 +413,7 @@ window.onload = function(){
 	pageInit.pubRegBtn();
 	pageInit.allRegBtn();
 	pageInit.editRegBtn();
-	pageInit.scrollInit(48,20,1000);
+	pageInit.scrollInit(48,40,2000);
 };
 
 
