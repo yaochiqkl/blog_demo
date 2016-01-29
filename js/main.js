@@ -176,7 +176,9 @@ var pageInit = (function(){
 		var dlt = document.querySelectorAll(".m-ctt .dlt-single");
 		var dltClick = function(){
 			var child = this.parentNode.parentNode.parentNode.parentNode;
-			data.splice(child.dataset.id,1);
+			var id = null;
+			//兼容低版本IE 取消使用 child.dataset.id
+			data.splice(child.getAttribute("data-id"),1);
 			pageInit.insertBlogs();
 		};
 		for (var i = 0; i < dlt.length; i++) {
@@ -191,11 +193,11 @@ var pageInit = (function(){
 				child.parentNode.removeChild(child);
 				var theFirstChild = document.querySelector(".m-ctt .slt");
 				//更新数组
-				data[child.dataset.id].rank = 5;
+				data[child.getAttribute("data-id")].rank = 5;
 			} else {
 				//已顶置时
 				child = this.parentNode.parentNode.parentNode.parentNode;
-				data[child.dataset.id].rank = 0;
+				data[child.getAttribute("data-id")].rank = 0;
 			}
 			pageInit.insertBlogs();
 		};
@@ -231,6 +233,8 @@ var pageInit = (function(){
 			}
 			pageInit.insertBlogs();
 		};
+	};
+	var pubRegBtn = function(){
 		//日志发布模块
 		var title = document.querySelector(".m-ipt .tt");
 		var textarea = document.querySelector(".m-ipt textarea");
@@ -274,7 +278,8 @@ var pageInit = (function(){
                         </div>\
                         <a class="edt  f-cr2">编辑</a>'
 				utils.addClass(slt,"slt");
-				slt.dataset.id = data.length;
+				//slt.dataset.id = data.length;
+				slt.setAttribute("data-id",data.length)
 				var new_item = {
 					"title" : title.value,
 					"blogContent":textarea.value,
@@ -291,15 +296,14 @@ var pageInit = (function(){
 				textarea.value = ""; 
 			}
 		};
+
 	};
 	var editRegBtn = function(){
 		//编辑选项
 		var edt = document.querySelectorAll(".m-ctt .edt");
 		var edtClick = function(){
 			var child = this.parentNode;
-			console.log(child.dataset.id);
-			console.log(child);
-			editPubRegBtn(child.dataset.id);
+			editPubRegBtn(child.getAttribute("data-id"));
 		};
 		for (var i = 0; i < edt.length; i++) {
 			edt[i].onclick = edtClick;  
@@ -368,7 +372,7 @@ var pageInit = (function(){
 				title.value = "日志标题";
 				textarea.value = ""; 
 				//重新绑定新日志的发布功能
-				allRegBtn();
+				pubRegBtn();
 			}
 		};
 	};
@@ -377,6 +381,7 @@ var pageInit = (function(){
 		insertBlogs: insertBlogs,
 		blogsRegBtn: blogsRegBtn,
 		allRegBtn: allRegBtn,
+		pubRegBtn: pubRegBtn,
 		editRegBtn: editRegBtn,
 		editPubRegBtn: editPubRegBtn,
 		scrollInit: scrollInit
@@ -390,6 +395,7 @@ window.onload = function(){
 	//后端没有返回CORS头部，跨域问题没有解决
 	//utils.doGet("getblogs");
 	pageInit.regBtn();
+	pageInit.pubRegBtn();
 	pageInit.allRegBtn();
 	pageInit.editRegBtn();
 	pageInit.scrollInit(48,20,1000);
