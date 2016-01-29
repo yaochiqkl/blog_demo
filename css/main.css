@@ -80,9 +80,9 @@
     .u-lst .hd{background-color: #e5e5e5;}
     .u-lst .icon{padding: 0 0px;margin: 5px 6px 8px 8px;}
     .u-lst .tt{vertical-align: middle;margin-top: -22px;margin-left: -3px;}
-    .u-lst li {margin: 7px 0 7px 30px;color:#21759b;cursor: pointer;}
-    .u-lst li:hover{color: #444;}
-    .u-lst li.active{color: #333;}
+    .u-lst li {padding: 7px 0 7px 30px;color:#21759b;cursor: pointer;}
+    .u-lst li:hover{color: #444;background-color: #e5e5e5;}
+    .u-lst li.active{color: #333;background-color: #e5e5e5;}
     /* 功能 */
     .f-cr1{color: #a4a4a4;}
     .f-cr2{color: #21759b;}

@@ -219,7 +219,6 @@ var pageInit = (function(){
 		function scrolling(){ 
 			if(o.scrollTop%lh !== 0){
 				o.scrollTop += 1; 
-				console.log(o.scrollTop);
 				if(o.scrollTop >= 384){
 					o.scrollTop = 0;
 				} 
@@ -239,9 +238,11 @@ var pageInit = (function(){
 	};
 })();
 
-
+	//静态模拟数据
 	pageInit.insertBlogs();
 window.onload = function(){
+	//后端没有返回CORS头部，跨域问题没有解决
+	//utils.doGet("getblogs");
 	pageInit.regBtn();
 	pageInit.blogsRegBtn();
 	pageInit.allRegBtn();
