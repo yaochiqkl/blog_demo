@@ -12,9 +12,10 @@ var utils = (function(){
 		//createxmlHttpRequest();
 		xmlHttp = new XMLHttpRequest();
 		xmlHttp.open("GET",commom_url + url);
-		xmlHttp.send(null);
+		var data = "test=asd";
+		xmlHttp.send(data);
 		xmlHttp.onreadystatechange=function(){
-			if(xmlHttp.readyState==4&&xmlHttp.status==200){
+			if(xmlHttp.readyState==4 && xmlHttp.status==200){
 				alert('success');
 			}else{
 				alert('fail');
@@ -33,8 +34,7 @@ var utils = (function(){
 	var addClass = function(obj, cls) {  
 	    if (!hasClass(obj, cls)) obj.className += " " + cls;  
 	};
-	var getDateT = function()
-	{
+	var getDateT = function() {
 		var d,s;
 		d = new Date();
 		s = 1900 + d.getYear() + "-";            
@@ -45,8 +45,8 @@ var utils = (function(){
 		s += d.getSeconds();        
 		return(s);  
 	};
-	//直接插入排序
 	var insertSort = function(array,param){
+		//直接插入排序
 		var x = param;
 		if (! (array instanceof Array)) {
 			alert("Not Array!");
@@ -326,7 +326,6 @@ var pageInit = (function(){
                         <div class="bd">2hit:教你如何吧美妞拍的...</div>\
                     </div>'
 		}
-		console.log(document.querySelector(".m-sd2 .content"));
 		document.querySelector(".m-sd2 .content").innerHTML = html;
 	};
 	//好友日志滚动模块
@@ -424,6 +423,3 @@ window.onload = function(){
 	pageInit.editRegBtn();
 	pageInit.scrollInit(48,40,2000);
 };
-
-
-
