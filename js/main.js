@@ -77,7 +77,7 @@ var utils = (function(){
 //页面初始化函数库
 var pageInit = (function(){
 	//菜单栏、标签栏点击事件
-	var regBtn = function(){
+	var menuRegBtn = function(){
 		//左侧菜单栏点击
 		var ls = document.querySelectorAll(".u-lst li");
 		var menuClick = function(){
@@ -241,7 +241,7 @@ var pageInit = (function(){
 			insertBlogs();
 		};
 	};
-	//日志发布模块
+	//新日志发布的提交
 	var pubRegBtn = function(){
 		var title = document.querySelector(".m-ipt .tt");
 		var textarea = document.querySelector(".m-ipt textarea");
@@ -303,7 +303,6 @@ var pageInit = (function(){
 				textarea.value = ""; 
 			}
 		};
-
 	};
 	//编辑选项初始化
 	var editRegBtn = function(){
@@ -315,6 +314,44 @@ var pageInit = (function(){
 		for (var i = 0; i < edt.length; i++) {
 			edt[i].onclick = edtClick;  
 		}
+	};
+	//编辑后的提交事件
+	var editPubRegBtn = function(id) {
+		//日志发布模块
+		var title = document.querySelector(".m-ipt .tt");
+		var textarea = document.querySelector(".m-ipt textarea");
+		var clear = document.querySelector(".m-ipt .clear");
+		var release = document.querySelector(".m-ipt .release");
+		title.value = data[id].title;
+		textarea.value  = data[id].blogContent;
+		title.onfocus = function(){
+			if(this.value === "日志标题"){
+				this.value = "";
+			}
+		};
+		title.onblur = function(){
+			if (this.value === "") {
+				this.value = "日志标题";
+			}
+		};
+		clear.onclick = function(){
+			textarea.value="";
+		};
+		release.onclick = function(){
+			if ( title.value === '日志标题') {
+				alert("请输入标题");
+			} else if (textarea.value === '' ) {
+				alert("请输入内容");
+			} else {
+				data[id].title = title.value;
+				data[id].blogContent = textarea.value;
+				insertBlogs();
+				title.value = "日志标题";
+				textarea.value = ""; 
+				//重新绑定新日志的发布功能
+				pubRegBtn();
+			}
+		};
 	};
 	//好友日志初始化
 	var insertFriendLog = function(){
@@ -358,54 +395,14 @@ var pageInit = (function(){
 		} 
 		setTimeout(start,delay); 
 	};
-	var editPubRegBtn = function(id) {
-		console.log("suc " + id);
-		//日志发布模块
-		var title = document.querySelector(".m-ipt .tt");
-		var textarea = document.querySelector(".m-ipt textarea");
-		var clear = document.querySelector(".m-ipt .clear");
-		var release = document.querySelector(".m-ipt .release");
-		title.value = data[id].title;
-		textarea.value  = data[id].blogContent;
-		title.onfocus = function(){
-			if(this.value === "日志标题"){
-				this.value = "";
-			}
-		};
-		title.onblur = function(){
-			if (this.value === "") {
-				this.value = "日志标题";
-			}
-		};
-		clear.onclick = function(){
-			textarea.value="";
-		};
-		release.onclick = function(){
-			if ( title.value === '日志标题') {
-				alert("请输入标题");
-			} else if (textarea.value === '' ) {
-				alert("请输入内容");
-			} else {
-				data[id].title = title.value;
-				data[id].blogContent = textarea.value;
-				insertBlogs();
-				title.value = "日志标题";
-				textarea.value = ""; 
-				//重新绑定新日志的发布功能
-				pubRegBtn();
-			}
-		};
-	};
 	
 	return {
-		regBtn: regBtn,
+		menuRegBtn: menuRegBtn,
 		insertBlogs: insertBlogs,
-		blogsRegBtn: blogsRegBtn,
 		insertFriendLog: insertFriendLog,
 		allRegBtn: allRegBtn,
 		pubRegBtn: pubRegBtn,
 		editRegBtn: editRegBtn,
-		editPubRegBtn: editPubRegBtn,
 		scrollInit: scrollInit
 	};
 })();
@@ -417,7 +414,7 @@ var pageInit = (function(){
 window.onload = function(){
 	//CORS没有配置，暂时无法跨域
 	//utils.doGet("getblogs");
-	pageInit.regBtn();
+	pageInit.menuRegBtn();
 	pageInit.pubRegBtn();
 	pageInit.allRegBtn();
 	pageInit.editRegBtn();
