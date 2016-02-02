@@ -1,3 +1,11 @@
+
+/**
+ * 模拟滚动效果（仅支持webkit）
+ * @author lishuangzhuang<hzlishuangzhuang@corp.netease.com>
+ * @version 1.1
+ */
+
+
 //工具类函数库
 var utils = (function(){
 	var commom_url = "http://fed.hz.netease.com/api/";
@@ -66,14 +74,19 @@ var utils = (function(){
 			A[i+1] = key;
 		}
 	};
+	var getNtnParent = function(elem,n) {
+		return n === 0 ? elem : arguments.callee(elem.parentNode, n - 1);
+	};
 	return {
 		doGet: doGet,
 		removeClass: removeClass,
 		addClass: addClass,
 		getDateT: getDateT,
-		sort: insertSort
+		sort: insertSort,
+		getNtnParent: getNtnParent
 	};
 })();
+
 //页面初始化函数库
 var pageInit = (function(){
 	//菜单栏、标签栏点击事件
@@ -182,7 +195,7 @@ var pageInit = (function(){
 		//单个删除选项
 		var dlt = document.querySelectorAll(".m-ctt .dlt-single");
 		var dltClick = function(){
-			var child = this.parentNode.parentNode.parentNode.parentNode;
+			var child = utils.getNtnParent(this,4);
 			var id = null;
 			//兼容低版本IE 取消使用 child.dataset.id
 			data.splice(child.getAttribute("data-id"),1);
@@ -194,16 +207,13 @@ var pageInit = (function(){
 		//单个顶置选项
 		var top = document.querySelectorAll(".m-ctt .top");
 		var child = null;
-		var topClick = function(){
+		var topClick = function(event){
+			child = utils.getNtnParent(this,4);
 			if ( this.innerHTML =="顶置" ) {
-				child = this.parentNode.parentNode.parentNode.parentNode;
 				child.parentNode.removeChild(child);
 				var theFirstChild = document.querySelector(".m-ctt .slt");
-				//更新数组
 				data[child.getAttribute("data-id")].rank = 5;
 			} else {
-				//已顶置时
-				child = this.parentNode.parentNode.parentNode.parentNode;
 				data[child.getAttribute("data-id")].rank = 0;
 			}
 			insertBlogs();
@@ -363,37 +373,7 @@ var pageInit = (function(){
                         <div class="bd">2hit:教你如何吧美妞拍的...</div>\
                     </div>'
 		}
-		document.querySelector(".m-sd2 .content").innerHTML = html;
-	};
-	//好友日志滚动模块
-	var scrollInit = function(lh,speed,delay){ 
-		var t = null; 
-		var o = document.querySelector(".m-sd2 .content");
-		var h = false;
-		o.onmouseover = function() {
-			h = true;
-		}
-		o.onmouseout = function() {
-			h = false;
-		}
-		function start(){ 
-			t = setInterval(scrolling,speed); 
-			if (!h ) {
-				o.scrollTop += 1;	
-			} 
-		} 
-		function scrolling(){ 
-			if(o.scrollTop%lh !== 0){
-				o.scrollTop += 1; 
-				if(o.scrollTop >= 384){
-					o.scrollTop = 0;
-				} 
-			} else {
-				clearInterval(t); 
-				setTimeout(start,delay); 
-			} 
-		} 
-		setTimeout(start,delay); 
+		document.querySelector(".m-sd .content").innerHTML = html;
 	};
 	
 	return {
@@ -402,8 +382,7 @@ var pageInit = (function(){
 		insertFriendLog: insertFriendLog,
 		allRegBtn: allRegBtn,
 		pubRegBtn: pubRegBtn,
-		editRegBtn: editRegBtn,
-		scrollInit: scrollInit
+		editRegBtn: editRegBtn
 	};
 })();
 
@@ -418,5 +397,5 @@ window.onload = function(){
 	pageInit.pubRegBtn();
 	pageInit.allRegBtn();
 	pageInit.editRegBtn();
-	pageInit.scrollInit(48,40,2000);
+	scroll.scrollInit(".m-sd .content",48,40,2000);
 };
